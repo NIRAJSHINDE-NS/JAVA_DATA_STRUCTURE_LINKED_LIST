@@ -2,49 +2,101 @@ public class LinkedList {
 	int data;
 	Node next;
 	Node head;
+	int size = 0;
 
-	//Node Class
+	// Node Class
 	class Node {
 		int data;
 		Node next;
 
-		//Parameterized Constructor
+		// Parameterized Constructor
 		Node(int x) {
 			data = x;
 			next = null;
 		}
 	}
-	
-	//Inserting new node at the Start of the Linked list
+
+	// Inserting new node at the Start of the Linked list
 	public Node insertNodeStart(int data) {
-		Node new_node = new Node(data);
-		
-		//Pointing head to new node inserted
-		new_node.next = head;
-		head = new_node;
+		Node newNode = new Node(data);
+
+		// Pointing head to new node inserted
+		newNode.next = head;
+		head = newNode;
+		/* After inserting, incrementing 
+		* the size of Linked list
+		**/
+		size++;
 		return head;
 	}
+
+	// Inserting new node in the Middle of the Linked list
+	public void insertNodeMiddle(int data) {
+		Node newNode = new Node(data);
+
+		Node slow = head;
+		Node fast = head;
+
+		// If Linked list is empty
+		if (head == null) {
+			return;
+		}
+
+		/*
+		 * Condition for finding out the 
+		 * middle element in Linked list
+		 */
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		/*
+		 * If middle element found, 
+		 * inserting the new node after 
+		 * the middle element in Linked list
+		 */
+		slow.next = newNode;
+
+		// After inserting, incrementing the size of Linked list
+		size++;
+	}
+
 	
-	//Inserting new node at the End of the Linked list
+	// Inserting new node at the End of the Linked list
 	public void insertNodeEnd(int data) {
 		Node newNode = new Node(data);
-		
-		if(head == null) {
+
+		/*
+		 * If Linked list is empty,
+		 * add a new node
+		 */
+		if (head == null) {
 			head = newNode;
 			return;
 		}
+
 		Node temp = head;
-		while(temp.next!=null) {
+
+		// For traversing through the Linked list
+		while (temp.next != null) {
 			temp = temp.next;
 		}
+		/*
+		 * If temp.next == null then 
+		 * add a new node
+		 */
 		temp.next = newNode;
 	}
-	
-	//Displaying the linked list
-	public void display() 
-	{
+
+	// Displaying the linked list
+	public void display() {
 		Node node = head;
-		while(node!=null) {
+		/*
+		 * Traversing through the Linked list 
+		 * and displaying the elements in Linked list
+		 */
+		while (node != null) {
 			System.out.print(node.data + " -> ");
 			node = node.next;
 		}
@@ -55,16 +107,16 @@ public class LinkedList {
 		// TODO Auto-generated method stub
 		LinkedList l = new LinkedList();
 		System.out.println("Creating a Linked List");
-		
-		//Inserting node at the Start of the Linked list
+
+		// Inserting node at the Start of the Linked list
 		l.insertNodeStart(56);
-		
-		//Inserting node at the End of the Linked list
-		l.insertNodeEnd(30);
-		
-		//Inserting node at the End of the Linked list
+
+		// Inserting node in Middle of the Linked list
+		l.insertNodeMiddle(30);
+
+		// Inserting node at the End of the Linked list
 		l.insertNodeEnd(70);
-		
+
 		l.display();
 
 	}
