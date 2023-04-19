@@ -56,6 +56,7 @@ public class LinkedList {
 		 * inserting the new node after 
 		 * the middle element in Linked list
 		 */
+		newNode.next = slow.next;
 		slow.next = newNode;
 
 		// After inserting, incrementing the size of Linked list
@@ -88,6 +89,20 @@ public class LinkedList {
 		 */
 		temp.next = newNode;
 	}
+	
+	// Deleting node at the Start of the Linked list
+	public void deleteNodeStart(int data) {
+		// If Linked list is Empty, cannot delete a node
+		if(head == null) {
+			System.out.println("Linked List is Empty");
+		}
+		System.out.println("Deleted node : " +head.data);
+		/*After deleting, pointing
+		 * the head to next node
+		 */
+		head = head.next;
+	}
+	
 
 	// Displaying the linked list
 	public void display() {
@@ -106,17 +121,31 @@ public class LinkedList {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LinkedList l = new LinkedList();
-		System.out.println("Creating a Linked List");
+		System.out.println();
+		System.out.println("LINKED LIST");
+		System.out.println("---------------------------------------------------------");
 
 		// Inserting node at the Start of the Linked list
+		System.out.println("Insertion at Start : ");
 		l.insertNodeStart(56);
+		l.display();
+		System.out.println("---------------------------------------------------------");
 
 		// Inserting node in Middle of the Linked list
+		System.out.println("Insertion in Middle : ");
 		l.insertNodeMiddle(30);
-
+		l.display();
+		System.out.println("---------------------------------------------------------");
+		
 		// Inserting node at the End of the Linked list
+		System.out.println("Insertion at Last : " );
 		l.insertNodeEnd(70);
-
+		l.display();
+		System.out.println("---------------------------------------------------------");
+		
+		// Deleting node at the Start of the Linked list
+		System.out.println("Deletion at Start : ");
+		l.deleteNodeStart(56);
 		l.display();
 
 	}
