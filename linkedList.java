@@ -103,6 +103,35 @@ public class LinkedList {
 		head = head.next;
 	}
 	
+	// Deleting node at the End of the Linked list
+	public void deleteNodeEnd() {
+		/*If Linked list is empty,
+		 * cannot delete a node
+		 */
+		if(head == null) {
+			System.out.println("Linked List is Empty");
+		}
+		//If Linked has only one node
+		if(head.next == null) {
+			System.out.println("Deleted node : " +head.data);
+			head = head.next;
+		}
+		Node previous = null;
+		Node temp = head;
+		
+		//Traversing till the last node
+		while(temp.next!=null) {
+			// Storing the data of previous node in previous
+			previous = temp;
+			temp = temp.next;
+		}
+		System.out.println("Deleted node : " +temp.data);
+		/* Assigning 2nd last node to 
+		 * null after deleting the last node
+		 */
+		previous.next = null;
+	}
+	
 
 	// Displaying the linked list
 	public void display() {
@@ -146,6 +175,19 @@ public class LinkedList {
 		// Deleting node at the Start of the Linked list
 		System.out.println("Deletion at Start : ");
 		l.deleteNodeStart(56);
+		l.display();
+		System.out.println("---------------------------------------------------------");
+
+		
+		// Inserting node at the Start of the Linked list
+		System.out.println("Insertion at Start : ");
+		l.insertNodeStart(56);
+		l.display();
+		System.out.println("---------------------------------------------------------");
+
+		// Deleting node at the End of the Linked list
+		System.out.println("Deletion at End : ");
+		l.deleteNodeEnd();
 		l.display();
 
 	}
