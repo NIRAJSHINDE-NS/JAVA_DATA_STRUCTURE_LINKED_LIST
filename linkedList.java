@@ -37,9 +37,9 @@ public class LinkedList {
 		LinkedList l = new LinkedList();
 		System.out.println("Creating a Linked List");
 		
-		l.insertNode(56);
-		l.insertNode(30);
 		l.insertNode(70);
+		l.insertNode(30);
+		l.insertNode(56);
 		
 		l.display();
 
