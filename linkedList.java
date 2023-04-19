@@ -132,7 +132,45 @@ public class LinkedList {
 		previous.next = null;
 	}
 	
+	// Searching a node in Linked List
+	public void searchNode(int data) {
+		boolean flag = false;
+		Node current = head;
+		// For position of given node
+		int i = 1;
 
+		/* If Linked list is empty, 
+		*cannot search a given node
+		*/
+		if (head == null) {
+			System.out.println("Linked List is Empty");
+		} else {
+			/*
+			 * Traversing till 
+			 * the last node
+			 */
+			while (current != null) {
+				/*
+				 * Comparing each node 
+				 * with the given element
+				 */
+				if (current.data == data) {
+					flag = true;
+					break;
+				}
+				i++;
+				current = current.next;
+			}
+		}
+
+		if (flag == true) {
+			System.out.println("Element " + data + " is present in Linked list at position : " + i);
+		} else {
+			System.out.println("Element is not present in Linked list");
+		}
+	}
+
+	
 	// Displaying the linked list
 	public void display() {
 		Node node = head;
@@ -189,6 +227,17 @@ public class LinkedList {
 		System.out.println("Deletion at End : ");
 		l.deleteNodeEnd();
 		l.display();
-
+		System.out.println("---------------------------------------------------------");
+		
+		// Inserting node at the End of the Linked list
+		System.out.println("Insertion at End : ");
+		l.insertNodeEnd(70);
+		l.display();
+		System.out.println("---------------------------------------------------------");
+		
+		// Searching node in Linked list
+		System.out.println("Searching a Node : ");
+		l.searchNode(30);
+		
 	}
 }
